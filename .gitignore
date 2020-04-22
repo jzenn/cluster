@@ -1,0 +1,15 @@
+# PyCharm
+.idea
+
+# python
+__pycache__
+
+# .ipynb notebooks
+notebooks
+
+# macos
+.DS_Store
+
+# package
+build
+*egg*
