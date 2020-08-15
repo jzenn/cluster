@@ -1,3 +1,4 @@
+import sys
 import warnings
 import numpy as np
 import numpy.random as rand
@@ -5,27 +6,27 @@ import numpy.linalg as lina
 
 
 class KMeansClustering:
-    def __init__(self, k, max_iter=1000, seed=0, eps=1e-10, norm=None):
+    def __init__(self, k, max_iter=1000, rep=10, seed=None, eps=1e-10, norm=None):
         self.k = k
         self.max_iter = max_iter
         self.seed = seed
         self.eps = eps
         self.norm = norm
+        self.rep = rep
 
         self.points = None
         self.cluster_belongings = None
+        self.objective = np.inf
 
     def _set_seed(self):
-        rand.seed(self.seed)
+        if self.seed is None:
+            rand.seed(rand.randint(2 ** 32 - 1))
+        else:
+            rand.seed(self.seed)
 
-    def get_points(self):
-        return self.points
-
-    def get_labels(self):
-        return self.cluster_belongings
-
-    def cluster(self, points):
+    def _cluster(self, points):
         self._set_seed()
+        objective = np.inf
 
         # points are expected to be of size: number_of_points x features (N x n)
         N, n = points.shape
@@ -58,10 +59,38 @@ class KMeansClustering:
 
             means = means_replace
 
+            objective = 0
+            for mean_index in range(self.k):
+                objective += np.sum(
+                    lina.norm(points_[cluster_belongings == mean_index, 0] - means[mean_index]) ** 2, axis=0
+                )
+
         if i == self.max_iter:
             warnings.warn(f'reached maximum number of iterations with {self.max_iter}')
         else:
             print(f'clusters have converged in {i} iterations')
 
-        self.points = points
-        self.cluster_belongings = cluster_belongings
+        return points, cluster_belongings, objective
+
+    def get_points(self):
+        return self.points
+
+    def get_labels(self):
+        return self.cluster_belongings
+
+    def cluster(self, points):
+        if self.seed is None:
+            for _ in range(self.rep):
+                points_, cluster_belongings_, objective_ = self._cluster(points)
+                if objective_ < self.objective:
+                    self.cluster_belongings = cluster_belongings_
+                    self.points = points_
+                    self.objective = objective_
+        else:
+            points_, cluster_belongings_, objective_ = self._cluster(points)
+            self.points = points_
+            self.cluster_belongings = cluster_belongings_
+            self.objective = objective_
+
+    def get_objective(self):
+        return self.objective
