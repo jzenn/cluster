@@ -69,7 +69,7 @@ def get_first_k_eig(A, k, sparse=False, norm=None):
 
     # note that A needs to be symmetric and positive semi-definite
     # checking ONLY symmetry for efficiency
-    assert (np.sum(A != A.T) == 0)
+    assert (np.sum(np.abs(A - A.T)) / np.sum(A.shape) < 1e-10)
 
     # exactly n eigenvectors
     if k > n: k = n
