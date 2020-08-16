@@ -59,6 +59,7 @@ class KMeansClustering:
 
             means = means_replace
 
+            # compute objective
             objective = 0
             for mean_index in range(self.k):
                 objective += np.sum(
