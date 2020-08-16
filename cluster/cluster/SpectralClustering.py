@@ -1,6 +1,9 @@
 import torch
+import numpy as np
 
 from scipy.sparse import csr_matrix
+from scipy.sparse.linalg import eigsh
+from scipy.linalg import eigh
 
 from .KMeansClustering import KMeansClustering
 from ..linalg import get_similarity_matrix
@@ -10,8 +13,8 @@ from ..linalg import get_first_k_eig
 
 
 class SpectralClustering:
-    def __init__(self, k, max_iter=1000, seed=0, eps=1e-10, norm=None, device='cpu', sparse=True, graph='kNN',
-                 graph_param=5):
+    def __init__(self, k, max_iter=1000, seed=None, eps=1e-10, norm=None, device='cpu', sparse=True, graph='kNN',
+                 graph_param=5, normalized=True, vectorize_similarity_matrix=True, use_scipy_eigh=False):
         self.k = k
         self.max_iter = max_iter
         self.seed = seed
@@ -21,6 +24,9 @@ class SpectralClustering:
         self.sparse = sparse
         self.graph_type = graph
         self.graph_param = graph_param
+        self.normalized = normalized
+        self.vectorize_similarity_matrix = vectorize_similarity_matrix
+        self.use_scipy_eigh = use_scipy_eigh
 
         self.kmeans = KMeansClustering(k=self.k, max_iter=self.max_iter, seed=self.seed, eps=self.eps, norm=self.norm)
 
@@ -35,7 +41,8 @@ class SpectralClustering:
         self.eigenvalues = None
 
     def _get_similarity_matrix(self, points):
-        return get_similarity_matrix(points=points, dev=self.device, norm=self.norm)
+        return get_similarity_matrix(points=points, dev=self.device, norm=self.norm,
+                                     vectorized=self.vectorize_similarity_matrix)
 
     def _create_graph(self, S):
         if self.graph_type == 'kNN':
@@ -62,7 +69,17 @@ class SpectralClustering:
 
     def _compute_first_k_eigenvectors(self):
         L = csr_matrix(self.L) if self.sparse else self.L
-        self.eigenvectors, self.eigenvalues = get_first_k_eig(L, self.k, sparse=self.sparse, norm=self.norm)
+        if self.use_scipy_eigh:
+            if self.sparse:
+                eigenvalues, eigenvectors = eigsh(L, k=self.k, sigma=0., mode='normal')
+                self.eigenvalues = eigenvalues
+                self.eigenvectors = eigenvectors.T
+            else:
+                eigenvalues, eigenvectors = eigh(L)
+                self.eigenvalues = eigenvalues[:self.k]
+                self.eigenvectors = eigenvectors[:, :self.k].T
+        else:
+            self.eigenvectors, self.eigenvalues = get_first_k_eig(L, self.k, sparse=self.sparse, norm=self.norm)
 
     def get_S(self):
         return self.S
@@ -87,13 +104,31 @@ class SpectralClustering:
         self.G = self._create_graph(self.S)
 
         # graph Laplacian
-        self.L = self.G.get_L()
+        if self.normalized:
+            self.L = self.G.get_L()
+            D = self.G.get_D()
+
+            with np.errstate(divide='raise'):
+                try:
+                    self.L = np.diag(np.diag(D) ** (-1/2)) @ self.L @ np.diag(np.diag(D) ** (-1/2))
+                except FloatingPointError:
+                    print('the graph has some isolated vertices, stopping')
+                    print('consider using a kNN or mkNN graph to overcome this issue')
+                    raise FloatingPointError('the graph has some isolated vertices, switch to a kNN/mkNN graph')
+
+        else:
+            self.L = self.G.get_L()
 
         # get the first k eigenvectors
         self._compute_first_k_eigenvectors()
 
         # cluster the eigenvectors
-        self.kmeans.cluster(self.eigenvectors.T)
+        if self.normalized:
+            D = self.G.get_D()
+
+            self.kmeans.cluster(np.diag(np.diag(D) ** (-1/2)) @ self.eigenvectors.T)
+        else:
+            self.kmeans.cluster(self.eigenvectors.T)
 
         # get the cluster belongings
         self.cluster_belongings = self.kmeans.get_labels()
