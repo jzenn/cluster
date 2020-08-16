@@ -71,12 +71,11 @@ class Graph:
 
     def compute_D(self):
         if self.W is not None:
-            n = len(self.node_list)
             if self.device.type == 'cpu':
                 D = np.diag(np.sum(self.W, axis=0))
                 self.D = D
             elif self.device.type == 'cuda':
-                D = torch.diag(torch.sum(self.W, axis=0))
+                D = torch.diag(torch.sum(self.W, dim=0))
                 D.to(self.device)
                 self.D = D
         else:
@@ -109,6 +108,16 @@ class Graph:
             self.compute_W()
             self.compute_D()
             return self.get_L()
+
+    def get_W(self):
+        if self.W is None:
+            _ = self.get_L()
+        return self.W
+
+    def get_D(self):
+        if self.D is None:
+            _ = self.get_L()
+        return self.D
 
     def __str__(self):
         nlt = '\n\t\t'
