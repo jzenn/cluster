@@ -71,7 +71,7 @@ def kNN_graph_from_similarity_matrix(S, k, dev=None):
         nodes += [node]
 
     for from_node_index in range(n):
-        kNN = np.argsort(S[from_node_index, :])[:k + 1]
+        kNN = np.argsort(-S[from_node_index, :])[:k + 1]
         kNN = np.delete(kNN, np.where(kNN == from_node_index))
 
         for neighbor_index in kNN:
@@ -98,7 +98,7 @@ def mkNN_graph_from_similarity_matrix(S, k, dev=None):
         nodes += [node]
 
     for from_node_index in range(n):
-        kNN_from = np.argsort(S[from_node_index, :])[:k + 1]
+        kNN_from = np.argsort(-S[from_node_index, :])[:k + 1]
         kNN_from = np.delete(kNN_from, np.where(kNN_from == from_node_index))
 
         for neighbor_index in kNN_from:
@@ -135,8 +135,8 @@ def visualize_graph_2d(points, graph, ax, title, annotate=True):
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
 
-    ax.set_xlim(-1, 1)
-    ax.set_ylim(-1, 1)
+    # ax.set_xlim(-1, 1)
+    # ax.set_ylim(-1, 1)
 
     ax.set_title(title)
 
