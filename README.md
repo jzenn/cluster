@@ -1,32 +1,31 @@
 # Clustering
 
-The Python `cluster` package is implements k-Means Clustering as well as Spectral 
-Clustering. It implements the functionality of both algorithms from scratch 
-(only using basic `numpy`). 
-
-This means: 
+The Python `cluster` package implements Spectral 
+Clustering as well as k-Means Clustering.
+It implements the functionality of both algorithms from scratch.
+This gives the possibility to fine-tune every parameter the algorithm has.  
 
 *k-Means*
-- k-Means is implemented from scratch
+on the circle dataset and on a mixture of Gaussians.
 ![Circles and Mixture kMeans Clustering](https://raw.githubusercontent.com/jzenn/cluster/master/assets/kMeans_clustering.png)
 
 
 *Spectral Clustering*
-- the similarity matrix is implemented from scratch given points
-- four different graph types can be used for the algorithm utilizing a graph 
-implementation
+- a similarity matrix can be obtained from points
+- four different graph types can be used for the algorithm
     - eps-graph
     - kNN-graph
     - mutual kNN graph
     - fully connected graph
-- the graph Laplacian is computed from scratch (the unnormalized Laplacian is used,
-implementing the normalized version is on the roadmap)
-- the eigenvectors and eigenvalues of the graph Laplacian are computed with an 
-implementation of the power method (here only the matrix-multiplication of sparse
-matrices from `scipy.sparse` is used)
-- the eigenvectors are clustered using the k-Means implementation of this package
+- the graph Laplacian is computed
+    - in its unnormalized version
+    - in its symmetric and normalized version
+- the eigenvectors and eigenvalues of the graph Laplacian are computed
+    - with an implementation of the power method
+    - using `scipy`'s `eigh` and `eigsh` methods
+- the eigenvectors are clustered with k-Means
 
-You can find some clustering examples underneath with parameter combinations.
+Here are some clustering examples with parameter combinations.
 
 ![Circles Spectral Custering](https://raw.githubusercontent.com/jzenn/cluster/master/assets/circles_spectral_clustering.png)
 ![Mixture Spectral Custering](https://raw.githubusercontent.com/jzenn/cluster/master/assets/mixture_spectral_clustering.png)
@@ -56,7 +55,7 @@ as well as `visualize_clusters_2d`, `visualize_graph_clusters_2d`.
 from cluster.cluster import KMeansClustering, visualize_clusters_2d
 
 k = 2
-kmeans_clustering = KMeansClustering(k=k, max_iter=1000, seed=0, eps=1e-10, norm=None)
+kmeans_clustering = KMeansClustering(k=k, max_iter=1000, seed=0, eps=1e-10, norm=None, rep=5)
 kmeans_clustering.cluster(points)
 
 fig, ax = plt.subplots(figsize=(15, 10))
@@ -70,7 +69,9 @@ from cluster.cluster import SpectralClustering, visualize_graph_clusters_2d
 
 k = 2
 spectral_clustering = SpectralClustering(
-    k, max_iter=1000, seed=0, eps=1e-10, norm=None, device='cpu', sparse=True, graph='kNN', graph_param=10)
+    k, max_iter=1000, seed=0, eps=1e-10, norm=None, device='cpu', 
+    sparse=True, graph='kNN', graph_param=10, normalized=True, 
+    vectorize_similarity_matrix=True, use_scipy_eigh=False)
 spectral_clustering.cluster(points)
 
 fix, ax = plt.subplots(1, 2, figsize=(15, 5))
@@ -196,4 +197,4 @@ plt.show()
 
 ## Roadmap
 
-- implement the normalized graph Laplacian
+- implement regularized spectral clustering
