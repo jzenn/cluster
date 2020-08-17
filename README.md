@@ -1,6 +1,6 @@
 # Clustering
 
-The Python `cluster` package implements Spectral 
+The `cluster` package implements Spectral 
 Clustering as well as k-Means Clustering.
 It implements the functionality of both algorithms from scratch.
 This gives the possibility to fine-tune every parameter the algorithm has.  
@@ -28,7 +28,6 @@ on the circle dataset and on a mixture of Gaussians.
 Here are some clustering examples with parameter combinations.
 
 ![Circles Spectral Custering](https://raw.githubusercontent.com/jzenn/cluster/master/assets/circles_spectral_clustering.png)
-![Mixture Spectral Custering](https://raw.githubusercontent.com/jzenn/cluster/master/assets/mixture_spectral_clustering.png)
 
 ## Installation
 
