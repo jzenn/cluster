@@ -1,1 +1,1 @@
-__all__ = ['cluster', 'graph', 'linalg', 'stats']
+__all__ = ["cluster", "graph", "utils"]
