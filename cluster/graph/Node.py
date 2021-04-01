@@ -23,7 +23,7 @@ class Node:
         get the value of the node
 
         :return: value of the node
-        :rtype: any
+        :rtype: Any
         """
         return self.value
 
@@ -32,7 +32,7 @@ class Node:
         get the attributes of the node
 
         :return: attributes of the node
-        :rtype: any
+        :rtype: Any
         """
         return self.attributes
 
@@ -41,8 +41,8 @@ class Node:
         get one specific attribute by name
 
         :param attribute: the attribute's name
-        :return: attribute
-        :rtype: any
+        :return: the attribute requested
+        :rtype: Any
         """
         return self.attributes.get(attribute)
 
@@ -52,7 +52,7 @@ class Node:
 
         :param attribute: the attribute to be set
         :param value: the value the attribute is set to
-        :return:
+        :return: None
         """
         self.attributes.update({attribute: value})
 

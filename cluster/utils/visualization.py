@@ -5,13 +5,13 @@ from cluster.graph import Graph
 
 # no type-hints for axis to not require the matplotlib-dependency
 def visualize_graph_2d(
-    points: np.array, graph: Graph, ax, title: str, annotate: bool = False
+    points: np.array, graph: Graph, ax, title: str = '', annotate: bool = False
 ):
     """
-    visualize a 2D graph in a matplotlib-figure
+    visualize a 2D graph in a matplotlib-axis
 
     :param points: points that are scattered
-    :param graph: graph that is plotted (values of nodes are coordinates)
+    :param graph: graph that is plotted
     :param ax: a matplotlib axis the data is plotted on
     :param title: a title for the figure
     :param annotate: whether to annotate the nodes with their corresponding index
@@ -89,12 +89,12 @@ def visualize_graph_2d(
     return ax
 
 
-def visualize_clusters_2d(points: np.array, labels: np.array, ax, title: str):
+def visualize_clusters_2d(points: np.array, labels: np.array, ax, title: str = ''):
     """
     visualize 2D clusters in a matplotlib-figure
 
-    :param points: the dataset
-    :param labels: the labels of each point in the dataset
+    :param points: points that are scattered (the dataset)
+    :param labels: labels of the points in the dataset
     :param ax: a matplotlib axis the data is plotted on
     :param title: a title for the figure
     :return: matplotlib axis

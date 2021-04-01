@@ -38,7 +38,7 @@ class SpectralClustering:
 
         :param k: the number of clusters to create
         :param max_iter: maximum number of iterations to perform for convergence of clusters in k-Means iteration
-        :param rep: number of times to repeat the k-Means clustering
+        :param rep: number of times to repeat the k-Means clustering algorithm
         :param seed: seed to use
         :param eps: stopping criterion
         :param norm: the norm to use
@@ -51,7 +51,6 @@ class SpectralClustering:
         :param graph_param: the parameters for the specified graph (i.e.: number of neighbors, epsilon)
         :param normalized: whether to use normalized spectral clustering
         :param vectorize_similarity_matrix: whether to vectorize the matrix or filling the matrix iteratively
-        :param use_scipy_eigh: whether to use scipy's eigh for computing the eigenvectors of the graph Laplacian
         """
         self.k = k
         self.max_iter = max_iter
@@ -127,7 +126,7 @@ class SpectralClustering:
 
     def get_S(self) -> np.array:
         """
-        return similarity matrix S
+        get similarity matrix S
 
         :return: similarity matrix S
         :rtype: np.array
@@ -136,16 +135,16 @@ class SpectralClustering:
 
     def get_graph(self) -> Graph:
         """
-        return graph
+        get graph
 
-        :return: graph object
+        :return: graph
         :rtype: Graph
         """
         return self.G
 
     def get_L(self) -> np.array:
         """
-        return graph Laplacian
+        get graph Laplacian L
 
         :return: graph Laplacian L
         :rtype: np.array
@@ -154,7 +153,7 @@ class SpectralClustering:
 
     def get_points(self) -> np.array:
         """
-        return clustered points
+        get clustered points
 
         :return: points
         :rtype: np.array
@@ -163,14 +162,20 @@ class SpectralClustering:
 
     def get_labels(self) -> np.array:
         """
-        return labels
+        get labels
 
-        :return:
+        :return: labels
         :rtype: np.array
         """
         return self.cluster_belongings
 
     def cluster(self, points: np.array) -> np.array:
+        """
+        cluster the points provided
+
+        :param points: the dataset to be clustered in form (N x d) where N is the number of points to be clustered
+        :return: None
+        """
         # similarity matrix
         self.S = self._get_similarity_matrix(points)
 

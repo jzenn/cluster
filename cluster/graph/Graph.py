@@ -20,7 +20,7 @@ class Graph:
         :param nodes: list of nodes
         :param edges: list of edges
         :param directed: whether the given graph is directed
-        :param attributes: attributes that this graph instance has
+        :param attributes: attributes of any kind added to this graph
         """
         self.directed = directed
         self.attributes = attributes if attributes is not None else {}
@@ -45,7 +45,7 @@ class Graph:
         add a node to the graph
 
         :param node: the node to be added
-        :return:
+        :return: None
         """
         if node in self.node_list:
             return
@@ -64,7 +64,7 @@ class Graph:
         add an edge to the graph
 
         :param edge: the edge to be added
-        :return:
+        :return: None
         """
         if edge.directed and not self.directed:
             raise RuntimeError("Can't add a directed edge to an undirected graph")
@@ -91,7 +91,7 @@ class Graph:
         self.D = None
         self.W = None
 
-    def get_neighbors(self, node) -> List[Node]:
+    def get_neighbors(self, node: Node) -> List[Node]:
         """
         get all neighboring nodes of a node
 
@@ -154,9 +154,10 @@ class Graph:
 
     def get_L(self) -> np.array:
         """
-        get the Laplacian L
+        get the graph Laplacian L
 
-        :return: None
+        :return: graph Laplacian L
+        :rtype: np.array
         """
         if self.D is not None and self.W is not None:
             return self.D - self.W
@@ -169,7 +170,8 @@ class Graph:
         """
         get the weighted adjacency matrix W
 
-        :return:
+        :return: weighted adjacency matrix W
+        :rtype: np.array
         """
         if self.W is None:
             _ = self.get_L()
@@ -179,7 +181,8 @@ class Graph:
         """
         get the degree matrix D
 
-        :return:
+        :return: degree matrix D
+        :rtype: np.array
         """
         if self.D is None:
             _ = self.get_L()

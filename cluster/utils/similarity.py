@@ -5,11 +5,12 @@ def get_similarity_matrix_from_distance_matrix(
     D: np.array, sigma: float = 1.0
 ) -> np.array:
     """
-    constructe the similarity matrix from the distance matrix by applying a Gaussian kernel with parameter sigma
+    construct the similarity matrix from the distance matrix by applying a Gaussian kernel with parameter sigma
 
-    :param D: the distance matrix
-    :param sigma: the parameter sigma used in the Gaussian kernel
-    :return: the similarity matrix
+    :param D: distance matrix
+    :param sigma: parameter sigma used in the Gaussian kernel
+    :return: similarity matrix S
+    :rtype: np.array
 
     Example
     ::
@@ -35,11 +36,12 @@ def get_distance_matrix_from_similarity_matrix(
 ) -> np.array:
     """
     construct the distance matrix from the similarity matrix by applying the inverse Gaussian kernel to the similarity
-    matrix (see also :meth: get_similarity_matrix)
+    matrix
 
-    :param S: the similarity matrix
-    :param sigma: the paramter sigma used in the Gaussian kernel
-    :return: the distance matrix
+    :param S: similarity matrix
+    :param sigma: parameter sigma used in the Gaussian kernel
+    :return: distance matrix D
+    :rtype: np.array
 
     Example
     ::
@@ -68,16 +70,16 @@ def get_similarity_matrix(
     distance: bool = False,
 ) -> np.array:
     """
-    construct the similarity matrix of an array of points by computing distances and applying a Gaussian kernel with
+    construct the similarity matrix of points by computing distances and applying a Gaussian kernel with
     parameter sigma
 
     :param points: array of points of size (N x d) where N is the number of points
     :param sigma: parameter for the Gaussian kernel
-    :param norm: the norm to use for the distance of the points
-    :param vectorized: whether to use a vectorized implementation (might use more memory initially) or to fill the
+    :param norm: norm to use for the distance of the points
+    :param vectorized: whether to use vectorization (might use more memory initially) or filling the
         similarity matrix iteratively (uses less memory)
     :param distance: whether to return the similarity matrix or the distance matrix
-    :return: similarity matrix for the points
+    :return: similarity matrix
     :rtype: np.array
 
     Example
@@ -125,17 +127,16 @@ def get_random_similarity_matrix(
     distance: bool = False,
 ):
     """
-    constructs a random similarity matrix by creating an array of points (N x d) and calling :meth:
-    get_similarity_matrix
+    constructs a random similarity matrix with random points of size (n x d)
 
     :param n: number of points to create
-    :param d: number of dimension for each point
+    :param d: number of dimension for each point to create
     :param sigma: parameter for the Gaussian kernel
-    :param norm: the norm to use for the distance of the points
-    :param vectorized: whether to use a vectorized implementation (might use more memory initially) or to fill the
+    :param norm: norm to use for the distance of the points
+    :param vectorized: whether to use vectorization (might use more memory initially) or filling the
         similarity matrix iteratively (uses less memory)
     :param distance: whether to return the similarity matrix or the distance matrix
-    :return: similarity matrix for random points
+    :return: similarity matrix
     :rtype: np.array
 
     Example

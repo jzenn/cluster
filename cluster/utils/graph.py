@@ -15,7 +15,7 @@ def fc_graph_from_similarity_matrix(S: np.array) -> Graph:
     create a fully connected graph from the similarity matrix S
 
     :param S: similarity matrix
-    :return: graph
+    :return: fully connected graph
     :rtype: Graph
 
     Example
@@ -97,11 +97,12 @@ def eps_graph_from_similarity_matrix(
     """
     create an epsilon-neighborhood graph from the similarity matrix S
 
-    :param S: similarity or distance matrix (should be reflected in distance)
+    :param S: similarity or distance matrix (should be reflected in parameter distance)
     :param eps: parameter for the epsilon-neighborhood graph
-    :param sigma: paramter to construct the distance matrix from the similarity matrix, only used when distance=False
+    :param sigma: parameter to construct the distance matrix from the similarity matrix, only used when distance=False
     :param distance: whether S is a distance matrix or a similarity matrix
-    :return: epsilon graph created from the similarity matrix
+    :return: epsilon-neighborhood graph
+    :rtype: Graph
 
     Example
     ::
@@ -199,7 +200,8 @@ def kNN_graph_from_similarity_matrix(S: np.array, k: int) -> Graph:
 
     :param S: similarity matrix
     :param k: number of neighbors for each node to consider
-    :return: k-nearest-neighbor graph created from the similarity matrix
+    :return: k-nearest-neighbor graph
+    :rtype: Graph
 
     Example
     ::
@@ -287,7 +289,8 @@ def mkNN_graph_from_similarity_matrix(S: np.array, k: int) -> Graph:
 
     :param S: the similarity matrix
     :param k: number of neighbors for each node to consider (mutually)
-    :return: mutual k-nearest-neighbor graph created from the similarity matrix
+    :return: mutual k-nearest-neighbor graph
+    :rtype: Graph
 
     Example
     ::

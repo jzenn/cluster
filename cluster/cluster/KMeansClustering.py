@@ -20,7 +20,7 @@ class KMeansClustering:
 
         :param k: the number of clusters to create
         :param max_iter: maximum number of iterations to perform for convergence of clusters
-        :param rep: number of times to repeat the k-Means clustering
+        :param rep: number of times to repeat the clustering algorithm
         :param seed: seed to use
         :param eps: stopping criterion
         :param norm: the norm to use
@@ -47,7 +47,6 @@ class KMeansClustering:
 
     def _cluster(self, points: np.array) -> (np.array, np.array, float):
         self._set_seed()
-        objective = np.inf
 
         # points are expected to be of size: number_of_points x features (N x n)
         N, n = points.shape
@@ -110,7 +109,7 @@ class KMeansClustering:
 
     def get_points(self) -> np.array:
         """
-        return clustered points
+        get points
 
         :return: points
         :rtype: np.array
@@ -119,18 +118,18 @@ class KMeansClustering:
 
     def get_labels(self) -> np.array:
         """
-        return labels
+        get labels
 
-        :return:
+        :return: labels
         :rtype: np.array
         """
         return self.cluster_belongings
 
     def cluster(self, points: np.array) -> None:
         """
-        cluster the points (dataset) provided
+        cluster the points provided
 
-        :param points: the dataset to be clustered in form (N x d) where N is the number of datums to be clustered
+        :param points: the dataset to be clustered in form (N x d) where N is the number of points to be clustered
         :return: None
         """
         if self.seed is None:

@@ -9,7 +9,7 @@ class Edge:
         """
         Edge between two nodes in a graph
 
-        :param connection: list of two nodes where the ordering indicates the direction of the edge
+        :param connection: list of two nodes where the ordering indicates the direction of the edge (if directed=True)
         :param directed: indicating whether this edge is directed (from_node -> to_node)
         :param weight: the weight of the edge
         """
@@ -65,7 +65,7 @@ class Edge:
         """
         return self.weight
 
-    def set_weight(self, weight) -> None:
+    def set_weight(self, weight: float) -> None:
         """
         set the weight of the edge
 
