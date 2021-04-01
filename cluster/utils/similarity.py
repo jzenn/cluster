@@ -10,6 +10,22 @@ def get_similarity_matrix_from_distance_matrix(
     :param D: the distance matrix
     :param sigma: the parameter sigma used in the Gaussian kernel
     :return: the similarity matrix
+
+    Example
+    ::
+        import numpy as np
+        from cluster.utils import get_similarity_matrix, get_similarity_matrix_from_distance_matrix
+
+        # some random points
+        points = np.random.rand(10, 5)
+
+        distance_matrix = get_similarity_matrix(points, distance=True)
+        similarity_matrix = get_similarity_matrix_from_distance_matrix(distance_matrix)
+
+    |
+
+
+
     """
     return np.exp(-(D ** 2) / (2 * sigma ** 2))
 
@@ -24,6 +40,22 @@ def get_distance_matrix_from_similarity_matrix(
     :param S: the similarity matrix
     :param sigma: the paramter sigma used in the Gaussian kernel
     :return: the distance matrix
+
+    Example
+    ::
+        import numpy as np
+        from cluster.utils import get_similarity_matrix, get_distance_matrix_from_similarity_matrix
+
+        # some random points
+        points = np.random.rand(10, 5)
+
+        similarity_matrix = get_similarity_matrix(points)
+        distance_matrix = get_distance_matrix_from_similarity_matrix(similarity_matrix)
+
+    |
+
+
+
     """
     return np.sqrt(-np.log(S) * (2 * sigma ** 2))
 
@@ -43,10 +75,26 @@ def get_similarity_matrix(
     :param sigma: parameter for the Gaussian kernel
     :param norm: the norm to use for the distance of the points
     :param vectorized: whether to use a vectorized implementation (might use more memory initially) or to fill the
-    similarity matrix iteratively (uses less memory)
+        similarity matrix iteratively (uses less memory)
     :param distance: whether to return the similarity matrix or the distance matrix
     :return: similarity matrix for the points
     :rtype: np.array
+
+    Example
+    ::
+        import numpy as np
+        from cluster.utils import get_similarity_matrix
+
+        # some random points
+        points = np.random.rand(10, 5)
+
+        distance_matrix = get_similarity_matrix(points, distance=True)
+        similarity_matrix = get_similarity_matrix(points)
+
+    |
+
+
+
     """
     # expect points to be (N x k)
     N, k = points.shape
@@ -74,6 +122,7 @@ def get_random_similarity_matrix(
     sigma: float = 1.0,
     norm: int = None,
     vectorized: bool = True,
+    distance: bool = False,
 ):
     """
     constructs a random similarity matrix by creating an array of points (N x d) and calling :meth:
@@ -84,9 +133,22 @@ def get_random_similarity_matrix(
     :param sigma: parameter for the Gaussian kernel
     :param norm: the norm to use for the distance of the points
     :param vectorized: whether to use a vectorized implementation (might use more memory initially) or to fill the
-    similarity matrix iteratively (uses less memory)
+        similarity matrix iteratively (uses less memory)
+    :param distance: whether to return the similarity matrix or the distance matrix
     :return: similarity matrix for random points
     :rtype: np.array
+
+    Example
+    ::
+
+        from cluster.utils import get_random_similarity_matrix
+
+        random_similarity_matrix = get_random_similarity_matrix(points, distance=True)
+
+    |
+
+
+
     """
     points = np.random.rand(n, d)
-    return get_similarity_matrix(points, sigma, norm, vectorized)
+    return get_similarity_matrix(points, sigma, norm, vectorized, distance)

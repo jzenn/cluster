@@ -24,4 +24,5 @@ __all__ = [
     "kNN_graph_from_similarity_matrix",
     "mkNN_graph_from_similarity_matrix",
     "visualize_clusters_2d",
+    "visualize_graph_2d",
 ]
