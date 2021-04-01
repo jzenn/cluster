@@ -13,3 +13,6 @@ notebooks
 # package
 build
 *egg*
+
+# gh-pages
+_build
