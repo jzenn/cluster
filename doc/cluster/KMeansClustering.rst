@@ -1,4 +1,4 @@
-K-Means Clustering
+k-Means Clustering
 ==================
 
 ``cluster.cluster`` provides an interface for k-Means Clustering and Spectral Clustering.
