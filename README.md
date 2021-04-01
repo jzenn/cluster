@@ -1,6 +1,8 @@
-# The ``cluster`` package
+The ``cluster`` package
+=======================
 
-## Documentation
+Documentation
+-------------
 
 This is a lightweight clustering package implementing Spectral Clustering as well as k-Means Clustering.
 There is some documentation available, that can be found [*here*](http://jzenn.github.io/cluster).
