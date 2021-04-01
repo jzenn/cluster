@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="cluster-jzenn",
-    version="0.1.0",
+    version="0.1.1",
     author="Johannes Zenn",
     author_email="johannes.zenn@gmail.com",
     description="A clustering package for k-Means Clustering and Spectral Clustering.",
