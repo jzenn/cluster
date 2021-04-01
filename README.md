@@ -27,7 +27,7 @@ API Reference
 * ``cluster.utils`` provides methods to construct similarity/distance matrices and differnt graphs from them.
 * ``cluster.graph`` is a lightweight graph implementation.
 
-A documentation with greater depth can be found [*here*](http://jzenn.github.io/cluster).
+A documentation can be found [*here*](http://jzenn.github.io/cluster).
 
 ## Roadmap
 
