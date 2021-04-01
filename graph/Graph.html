@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph &#8212; cluster 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom_headings.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Node" href="Node.html" />
+    <link rel="prev" title="Utils" href="../cluster/utils.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="graph">
+<h1>Graph<a class="headerlink" href="#graph" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">cluster.graph</span></code> provides interfaces for <code class="docutils literal notranslate"><span class="pre">Graph</span></code>, <code class="docutils literal notranslate"><span class="pre">Node</span></code> and <code class="docutils literal notranslate"><span class="pre">Edge</span></code>.</p>
+<dl class="py class">
+<dt id="cluster.graph.Graph">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">cluster.graph.Node.Node</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">cluster.graph.Edge.Edge</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">AnyStr</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster.graph.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Graph object consisting of nodes and edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> – list of nodes</p></li>
+<li><p><strong>edges</strong> – list of edges</p></li>
+<li><p><strong>directed</strong> – whether the given graph is directed</p></li>
+<li><p><strong>attributes</strong> – attributes of any kind added to this graph</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="cluster.graph.Graph.add_edge">
+<code class="sig-name descname"><span class="pre">add_edge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">cluster.graph.Edge.Edge</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#cluster.graph.Graph.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>add an edge to the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>edge</strong> – the edge to be added</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Graph.add_node">
+<code class="sig-name descname"><span class="pre">add_node</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">cluster.graph.Node.Node</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#cluster.graph.Graph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a node to the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> – the node to be added</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Graph.get_D">
+<code class="sig-name descname"><span class="pre">get_D</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.array</span><a class="headerlink" href="#cluster.graph.Graph.get_D" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the degree matrix D</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>degree matrix D</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Graph.get_L">
+<code class="sig-name descname"><span class="pre">get_L</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.array</span><a class="headerlink" href="#cluster.graph.Graph.get_L" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the graph Laplacian L</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>graph Laplacian L</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Graph.get_W">
+<code class="sig-name descname"><span class="pre">get_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.array</span><a class="headerlink" href="#cluster.graph.Graph.get_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the weighted adjacency matrix W</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>weighted adjacency matrix W</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Graph.get_edge_list">
+<code class="sig-name descname"><span class="pre">get_edge_list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">cluster.graph.Edge.Edge</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#cluster.graph.Graph.get_edge_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>get all edges of the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of edges</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list(<a class="reference internal" href="Edge.html#cluster.graph.Edge" title="cluster.graph.Edge">Edge</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Graph.get_neighbors">
+<code class="sig-name descname"><span class="pre">get_neighbors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">cluster.graph.Node.Node</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">cluster.graph.Node.Node</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#cluster.graph.Graph.get_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>get all neighboring nodes of a node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> – node to get the neighbors of</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of neighboring nodes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(<a class="reference internal" href="Node.html#cluster.graph.Node" title="cluster.graph.Node">Node</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Graph.get_node_list">
+<code class="sig-name descname"><span class="pre">get_node_list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">cluster.graph.Node.Node</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#cluster.graph.Graph.get_node_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>get all nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of nodes of the graph</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list(<a class="reference internal" href="Node.html#cluster.graph.Node" title="cluster.graph.Node">Node</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">cluster</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Clustering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/SpectralClustering.html">Spectral Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/KMeansClustering.html">k-Means Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/utils.html">Utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Graph:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Node.html">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Edge.html">Edge</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../cluster/utils.html" title="previous chapter">Utils</a></li>
+      <li>Next: <a href="Node.html" title="next chapter">Node</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Johannes Zenn.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/graph/Graph.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

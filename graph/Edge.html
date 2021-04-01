@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edge &#8212; cluster 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom_headings.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Node" href="Node.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="edge">
+<h1>Edge<a class="headerlink" href="#edge" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">cluster.graph</span></code> provides interfaces for <code class="docutils literal notranslate"><span class="pre">Graph</span></code>, <code class="docutils literal notranslate"><span class="pre">Node</span></code> and <code class="docutils literal notranslate"><span class="pre">Edge</span></code>.</p>
+<dl class="py class">
+<dt id="cluster.graph.Edge">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Edge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster.graph.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edge between two nodes in a graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> – list of two nodes where the ordering indicates the direction of the edge (if directed=True)</p></li>
+<li><p><strong>directed</strong> – indicating whether this edge is directed (from_node -&gt; to_node)</p></li>
+<li><p><strong>weight</strong> – the weight of the edge</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="cluster.graph.Edge.get_from_node">
+<code class="sig-name descname"><span class="pre">get_from_node</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">cluster.graph.Node.Node</span><a class="headerlink" href="#cluster.graph.Edge.get_from_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the from-node (where the edge starts from)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>from-node</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="Node.html#cluster.graph.Node" title="cluster.graph.Node">Node</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Edge.get_to_node">
+<code class="sig-name descname"><span class="pre">get_to_node</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">cluster.graph.Node.Node</span><a class="headerlink" href="#cluster.graph.Edge.get_to_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the to-node (where the edge is directed to)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>to-node</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="Node.html#cluster.graph.Node" title="cluster.graph.Node">Node</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Edge.get_weight">
+<code class="sig-name descname"><span class="pre">get_weight</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#cluster.graph.Edge.get_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the weight of the edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>weight of the edge</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Edge.set_weight">
+<code class="sig-name descname"><span class="pre">set_weight</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#cluster.graph.Edge.set_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the weight of the edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>weight</strong> – weight of the edge</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">cluster</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Clustering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/SpectralClustering.html">Spectral Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/KMeansClustering.html">k-Means Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/utils.html">Utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Graph:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Graph.html">Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Node.html">Node</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Edge</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Node.html" title="previous chapter">Node</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Johannes Zenn.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/graph/Edge.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

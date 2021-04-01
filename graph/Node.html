@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node &#8212; cluster 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom_headings.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Edge" href="Edge.html" />
+    <link rel="prev" title="Graph" href="Graph.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="node">
+<h1>Node<a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">cluster.graph</span></code> provides interfaces for <code class="docutils literal notranslate"><span class="pre">Graph</span></code>, <code class="docutils literal notranslate"><span class="pre">Node</span></code> and <code class="docutils literal notranslate"><span class="pre">Edge</span></code>.</p>
+<dl class="py class">
+<dt id="cluster.graph.Node">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Node</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">AnyStr</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cluster.graph.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node of a graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – the value of the node</p></li>
+<li><p><strong>attributes</strong> – attributes of the node</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="cluster.graph.Node.get_attribute">
+<code class="sig-name descname"><span class="pre">get_attribute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">AnyStr</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="headerlink" href="#cluster.graph.Node.get_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>get one specific attribute by name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attribute</strong> – the attribute’s name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the attribute requested</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Node.get_attributes">
+<code class="sig-name descname"><span class="pre">get_attributes</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">AnyStr</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#cluster.graph.Node.get_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the attributes of the node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>attributes of the node</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Node.get_degree">
+<code class="sig-name descname"><span class="pre">get_degree</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#cluster.graph.Node.get_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the degree of the node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>degree of node</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Node.get_value">
+<code class="sig-name descname"><span class="pre">get_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="headerlink" href="#cluster.graph.Node.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the value of the node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>value of the node</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Node.increase_degree">
+<code class="sig-name descname"><span class="pre">increase_degree</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#cluster.graph.Node.increase_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>increase the degree of the node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>by</strong> – increment the node’s degree is increased by</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Node.set_attribute">
+<code class="sig-name descname"><span class="pre">set_attribute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">AnyStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#cluster.graph.Node.set_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>set one specific attribute by name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attribute</strong> – the attribute to be set</p></li>
+<li><p><strong>value</strong> – the value the attribute is set to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cluster.graph.Node.set_degree">
+<code class="sig-name descname"><span class="pre">set_degree</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#cluster.graph.Node.set_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the degree of the node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>degree</strong> – degree of the node</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">cluster</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Clustering</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/SpectralClustering.html">Spectral Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/KMeansClustering.html">k-Means Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cluster/utils.html">Utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Graph:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Graph.html">Graph</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Edge.html">Edge</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Graph.html" title="previous chapter">Graph</a></li>
+      <li>Next: <a href="Edge.html" title="next chapter">Edge</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Johannes Zenn.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/graph/Node.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
